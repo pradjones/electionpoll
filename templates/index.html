@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>AusVote2019</title>
+            <meta charset="UTF-8"> 
+            
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
+
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
+
+        <body>
+            {% extends "base.html" %}
+
+
+
+            {% block content %}
+
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm-3'>
+
+                        <h2>Active Polls</h2>
+
+                        <ul>
+                            <li>"Who is the better PM"</li>
+                            <li>"Is Malcom Turnbull going to win"</li>
+                        </ul>
+                    </div>
+
+                    <div class='col-sm-9'>
+
+                        <h2>Vote for your preferred choice:</h2>
+
+                        {% for topic in topics %}
+
+                        <form class="voting" method="POST">
+
+                        <span class="pollTitle" >{{topic.title}}</span><br>
+
+                        {% for option in topic.options.all() %}
+
+                        <input type="radio"name="Vote" value={{option}}>{{option}}
+
+                        {% endfor %}
+
+                        <div><input type="submit" value="Submit"></div>
+
+                        </form>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            
+
+            {% endblock %}
+        </body>
+    </html>

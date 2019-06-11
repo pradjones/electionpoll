@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="Create Poll">
+    <form id="create-poll" method="POST" action="/api/poll">
+        <div class="pollQuestion" style="align-content: center">
+            <span>Create your poll question here.</span><br>
+            <textarea type="text" size="50" name="pollQuestion"
+                placeholder="Enter the question here" rows="3"></textarea>
+        </div>
+        <div class="choicesWrap" id="choices">
+            <input id="choicetitle1" type="text" size="30" name="choiceTitle1" placeholder="Option1"><br>
+            <input id="choicetitle2" type="text" size="30" name="choiceTitle2" placeholder="Option2"><br>
+            <input id="choicetitle3" type="text" size="30" name="choiceTitle3" placeholder="Option3"><br>
+        </div>
+        <div class="submit">
+            <input type="button" value="Add Option" class="addOption" onclick="addOption()">
+            <input type="button" value="Remove Option" class="removeOption" onclick="removeOption()"><br><br>
+            <input type="submit" value="Create" class="submit">
+        </div>
+        <div class="cancelButtonWrap">
+            <span class="cancelButton"><a href="{{url_for('index')}}">Cancel</a></span>
+        </div>
+
+
+    </form>
+</div>
+<script>
+    function addOption(){
+        var choices = document.getElementById("choices");
+        var currInputs = choices.getElementsByTagName("input");
+        var input = document.createElement("input");
+        input.type = "text";
+        input.size = "30";
+        var lastInput = currInputs[currInputs.length-1];
+        var i = lastInput.name[lastInput.name.length -1];
+        i = parseInt(i,10);
+        i = i+1;
+        input.id = "choiceTitle" + i.toString();
+        input.name = "choiceTitle" + i.toString();
+        input.placeholder = "Option" + i.toString();
+        choices.appendChild(input);
+        var brk = document.createElement("br");
+        choices.appendChild(brk);
+
+    }
+    function removeOption(){
+        var choices = document.getElementById("choices");
+        var currInputs = choices.getElementsByTagName("input");
+        var lastInput = currInputs[currInputs.length - 1];
+        var id = lastInput.id
+        var input = document.getElementById(id);
+        choices.removeChild(input);
+        choices.removeChild(choices.getElementsByTagName("br")[currInputs.length - 1])
+    }
+</script>
+{% endblock %}

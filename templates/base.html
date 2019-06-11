@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% if title %}
+    <title>{{ title }} </title>
+    {% else %}
+    <title>Australian Electoral Polls</title>
+    {% endif %}
+    <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
+
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        
+            <style>
+
+                    body {
+                    
+                      font-family: 'Lato', sans-serif;
+                    
+                    }
+                    
+                    
+                    
+                    .overlay {
+                    
+                      height: 100%;
+                    
+                      width: 0;
+                    
+                      position: fixed;
+                    
+                      z-index: 1;
+                    
+                      top: 0;
+                    
+                      left: 0;
+                    
+                      background-image: url('australia.svg.png');
+                    
+                      background-repeat: no-repeat;
+                    
+                      background-position: 50% 45%;
+                    
+                      background-size: 65% 80%;
+                    
+                      overflow-x: hidden;
+                    
+                      transition: 0.5s;
+                    
+                    }
+                    
+                    
+                    
+                    /*.overlay-content {
+                    
+                      position: relative;
+                    
+                      top: 25%;
+                    
+                      width: 100%;
+                    
+                      text-align: center;
+                    
+                      margin-top: 30px;
+                    
+                    }  */
+                    
+                    
+                    
+                    .overlay a {
+                    
+                      padding: 8px;
+                    
+                      text-decoration: none;
+                    
+                      font-size: 20px;
+                    
+                      color:black;
+                    
+                      display: block;
+                    
+                      transition: 0.3s;
+                    
+                    }
+                    
+                    
+                    
+                    .overlay a:hover, .overlay a:focus {
+                    
+                      color: #f1f1f1;
+                    
+                    }
+                    
+                    
+                    
+                    .overlay .closebtn {
+                    
+                      position: absolute;
+                    
+                      top: 20px;
+                    
+                      right: 45px;
+                    
+                      font-size: 60px;
+                    
+                    }
+                    
+                    
+                    
+                    .NT {
+                    
+                      position: absolute;
+                    
+                      top: 180px;
+                    
+                      right: 600px;
+                    
+                    }
+                    
+                    
+                    
+                    .WA {
+                    
+                      position: absolute;
+                    
+                      top: 280px;
+                    
+                      left: 320px;
+                    
+                    }
+                    
+                    
+                    
+                    .QLD {
+                    
+                      position: absolute;
+                    
+                      top: 230px;
+                    
+                      right: 400px;
+                    
+                    }
+                    
+                    
+                    
+                    .NSW {
+                    
+                      position: absolute;
+                    
+                      bottom: 250px;
+                    
+                      right: 310px;
+                    
+                    } 
+                    
+                    
+                    
+                    .TAS {
+                    
+                      position: absolute;
+                    
+                      bottom: 80px;
+                    
+                      right: 360px;
+                    
+                    }
+                    
+                    
+                    
+                    .SA {
+                    
+                      position: absolute;
+                    
+                      bottom: 285px;
+                    
+                      right: 560px;
+                    
+                    }
+                    
+                    
+                    
+                    .ACT {
+                    
+                      position: absolute;
+                    
+                      bottom: 200px;
+                    
+                      right: 320px;
+                    
+                    }
+                    
+                    
+                    
+                    .VIC {
+                    
+                      position: absolute;
+                    
+                      bottom: 170px;
+                    
+                      right: 400px;
+                    
+                    }
+                    
+                    </style>
+</head>
+
+<body>
+    <div>Go To <a href="/index">User Page</a> <a href="/api/poll">Create Poll</a> <a href="/delete-poll">Delete Poll</a><a href="/api/graphs">See graphs</a></div>
+    <hr>
+    <!-- Chart.js import-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+  <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">AusVote2019</a>
+                    </div>
+                    
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/index"><span class="glyphicon glyphicon-user"></span> User Page</a></li>
+                        <li><a href="/api/graphs"><span class="glyphicon glyphicon-stats"></span> See Graphs</a></li>
+                    </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">   
+                        <span style="font-size:24px;cursor:pointer" onclick="openNav()">&#9776; States</span>  
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="myNav" class="overlay">
+
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  
+                    <div class="overlay-content">
+                  
+                          <div class="container">
+                  
+                              <a class="WA" href="#">Western Australia</a>
+                  
+                              <a class="NT" href="#">Northern Territory</a>
+                  
+                              <a class="SA" href="#">South Australia</a>
+                  
+                              <a class="QLD" href="#">Queensland</a>
+                  
+                              <a class="NSW" href="#">New South Wales</a>
+                  
+                              <a class="ACT" href="#">ACT</a>
+                  
+                              <a class="VIC" href="#">Victoria</a>
+                  
+                              <a class="TAS" href="#">Tasmania</a>
+                  
+                          </div>
+                  
+                    </div>
+                  
+            </div>
+            
+            
+            <!-- Chart.js import-->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+            
+            <script>
+
+                function openNav() {
+                    
+                document.getElementById("myNav").style.width = "100%";
+                    
+                }
+                    
+                    
+                    
+                function closeNav() {
+                    
+                document.getElementById("myNav").style.width = "0%";
+                    
+                }
+                    
+            </script>
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>
