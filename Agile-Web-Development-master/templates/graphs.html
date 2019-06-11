@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id ="chart-container" style="position: relative; height:40vh; width:40vw;">
+<script>
+    window.onload = function(){
+        var data = ("{{data}}");
+        while (data.includes('&#39;')) {
+            data = data.replace('&#39;', '"');
+        }
+        var dict = JSON.parse(data);
+        var j;
+        var chartno = 1;
+        for(j=0;j<dict.length;j++){
+            options = dict[j]['options'];
+            labels = [];
+            dataset = [];
+            var i;
+            for (i = 0; i < options.length; i++) {
+                labels.push(options[i]['name'])
+                dataset.push(options[i]['vote_count'])
+            }
+            pollTitle = dict[j]['title'];
+            console.log(pollTitle);
+            container = document.getElementById('chart-container');
+            chartDiv = document.createElement('div');
+            chartDiv.id = "chart-"+ chartno.toString;;
+            chartDiv.style.position = 'relative';
+            chartDiv.style.height = '40vh';
+            chartDiv.style.width = '40vw';
+            chartDiv.style.padding-top = '50px';
+            chartDiv.style.padding-right = '30px';
+            chartDiv.style.padding-bottom = '50px';
+            chartDiv.style.padding-left = '30px';
+            container.appendChild(chartDiv);
+            brk = document.createElement('br');
+            var topic = document.createElement('HEADER');
+            topic.id = "topic" + chartno.toString;
+            topic.innerText = pollTitle;
+            chartDiv.appendChild(brk);
+            chartDiv.appendChild(topic);
+            canvas = document.createElement('canvas');
+            canvas.id = "mychart" + chartno.toString;
+            chartDiv.appendChild(canvas);
+            addChart(canvas, labels, dataset); 
+            chartDiv.appendChild(brk);
+            chartno = chartno + 1
+        }
+    }
+    
+    function addChart(ctx,labels,dataset){
+        ctx = ctx.getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+            // The data for our dataset
+            data: {
+                labels: labels,
+                datasets: [{
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: 'rgb(255, 90, 132)',
+                    data: dataset
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                legend: {
+                    display: false
+                },
+            }
+        });
+    }
+</script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-image: url('australia.svg.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 75% 100%;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+/*.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}  */
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 24px;
+  color:black;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.NT {
+  position: absolute;
+  top: 180px;
+  right: 580px;
+}
+
+.WA {
+  position: absolute;
+  top: 280px;
+  left: 260px;
+}
+
+.QLD {
+  position: absolute;
+  top: 180px;
+  right: 400px;
+}
+
+.NSW {
+  position: absolute;
+  bottom: 230px;
+  right: 270px;
+} 
+
+.TAS {
+  position: absolute;
+  bottom: 20px;
+  right: 320px;
+}
+
+.SA {
+  position: absolute;
+  bottom: 280px;
+  right: 550px;
+}
+
+.ACT {
+  position: absolute;
+  bottom: 160px;
+  right: 290px;
+}
+
+.VIC {
+  position: absolute;
+  bottom: 130px;
+  right: 360px;
+}
+</style>
+</head>
+<body>
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+        <div class="container">
+            <a class="WA" href="#">Western Australia</a>
+            <a class="NT" href="#">Northern Territory</a>
+            <a class="SA" href="#">South Australia</a>
+            <a class="QLD" href="#">Queensland</a>
+            <a class="NSW" href="#">New South Wales</a>
+            <a class="ACT" href="#">ACT</a>
+            <a class="VIC" href="#">Victoria</a>
+            <a class="TAS" href="#">Tasmania</a>
+        </div>
+  </div>
+</div>
+
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+     
+</body>
+</html>

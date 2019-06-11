@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AusVote2019</title>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">AusVote2019</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class='jumbrotron text-center'>
+        <h1>Your guide to the 2019 Australian Federal Election<br></h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-3'>
+                <h2>Federal Election is Announced</h2>
+                <p>The gloves are off! As always, the current Federal election is shaping into a battle of contrasts.
+                    AusVote2019 is
+                    here to help you decide where your vote goes. With information on all the major parties and our vote
+                    tracker AusVote2019
+                    is your one stop shop for this Federal election.</p>
+
+            </div>
+
+            <div class='col-sm-9'>
+                <h2>Major Party Details</h2>
+                <table class='table table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Leader</th>
+                            <th>Website</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Liberal Party</td>
+                            <td>Scott Morrison</td>
+                            <td><a href="https://www.liberal.org.au/">Website</a></td>
+                        </tr>
+                        <tr>
+                            <td>Labor Party</td>
+                            <td>Bill Shorten</td>
+                            <td><a href="https://www.alp.org.au/">Website</a></td>
+                        </tr>
+                        <tr>
+                            <td>Greens Party</td>
+                            <td>Richard Di Natale</td>
+                            <td><a href="https://greens.org.au/">Website</a></td>
+                        </tr>
+                        <tr>
+                            <td>United Australia Party</td>
+                            <td>Clive Palmer</td>
+                            <td><a href="https://www.unitedaustraliaparty.org.au">Website</a></td>
+                        </tr>
+                        <tr>
+                            <td>Pauline Hansons One Nation</td>
+                            <td>Pauline Hanson</td>
+                            <td><a href="https://www.onenation.org.au/">Website</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a class="twitter-timeline" href="https://twitter.com/electionwatch_?ref_src=twsrc%5Etfw">Tweets by electionwatch_</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="footer">
+
+                <button onclick="modified()">Last Modified</button>
+                <p id="demo"></p>
+
+                <script>
+                    function modified() {
+                        var x = new Date(document.lastModified);
+                        document.getElementById("demo").innerHTML = x;
+                    }
+                </script>
+
+                <button onclick="time()">Time</button>
+                <p id="f"></p>
+
+                <script>
+                    function time() {
+                        var y = new Date();
+                        document.getElementById('f').innerHTML = y;
+                    }
+
+                </script>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

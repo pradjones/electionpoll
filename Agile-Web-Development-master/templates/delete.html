@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="deletePoll" method="POST">
+    <span>Select the poll to delete:</span><br>
+    {% for topic in topics %}
+    <input type="radio" name="title" value="{{topic}}">{{topic}}<br>
+    {% endfor %}
+    <div><input type="submit" value="Delete"></div>
+
+
+</form>
+
+{% endblock %}
